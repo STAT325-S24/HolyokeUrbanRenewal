@@ -31,6 +31,6 @@ of whether there is a link between maternal smoking and the
 baby's health.
 }
 \examples{
-mosaic::tally(~ type, data = HolyokeUrbanRenewal)
+head(mtcars)
 }
 \keyword{datasets}

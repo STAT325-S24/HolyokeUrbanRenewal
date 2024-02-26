@@ -27,5 +27,5 @@
 #'   }
 #'
 #' @examples
-#' mosaic::tally(~ type, data = HolyokeUrbanRenewal)
+#' head(mtcars)
 "HolyokeUrbanRenewal"
