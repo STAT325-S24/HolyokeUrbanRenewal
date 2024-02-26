@@ -8,18 +8,6 @@ get_filename(formula)
 }
 \arguments{
 \item{formula}{the formula describing the relationship}
-
-\item{data}{a data frame (or you can pipe this in)}
-
-\item{...}{statistics functions to be applied to the data, e.g. mean, sd, confidence(0.95)}
-
-\item{as.percent}{show proportions in percent (e.g. multiply by 100)}
-
-\item{wide}{reformat the output as a cross-tabulation. This makes sense only when there are just two variables}
-
-\item{margins}{show the marginal probabilities. Makes the most sense if \code{wide = TRUE}.}
-
-\item{format}{Use just for internal purposes.}
 }
 \description{
 XX

@@ -1,0 +1,44 @@
+---
+title: "Holyoke Urban Renewal data"
+author: "STAT325 (Text Analytics) class at Amherst College"
+date: "2024-02-26"
+date-format: iso
+format: gfm
+editor: source
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(HolyokeUrbanRenewal)
+```
+
+This file describes the `HolyokeUrbanRenewal` package.
+It provides access to archival materials from the Holyoke Public Library History Room Riverview Prospect Heights Urban Renewal Project.
+
+See https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project for more information.
+
+The package is interesting because XX, YY, and ZZ.
+
+The package can be installed by running:
+
+```
+devtools::install_github("STAT325-S24/HolyokeUrbanRenewal")
+library(HolyokeUrbanRenewal)
+```
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+citation(package = "HolyokeUrbanRenewal")
+glimpse(HolyokeUrbanRenewal)
+get_filename()
+```
+
+Here are some sample analyses:
+
+XX
+
+YY
+
+ZZ
