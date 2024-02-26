@@ -3,7 +3,7 @@
 \docType{data}
 \name{HolyokeUrbanRenewal}
 \alias{HolyokeUrbanRenewal}
-\title{Birth weights and maternal data}
+\title{Holyoke Urban Renewal archival materials}
 \format{
 A data frame with 886 observations on the following variables.
 \itemize{
@@ -19,7 +19,7 @@ D. Nolan and T.P. Speed (2009) "Stat Labs: Mathematical
 Statistics Through Applications"
 }
 \usage{
-data(HolyokeUrbanRenewal
+data(HolyokeUrbanRenewal)
 }
 \description{
 Birth weight, date, and gestational period collected as part
@@ -31,7 +31,6 @@ of whether there is a link between maternal smoking and the
 baby's health.
 }
 \examples{
-mod_1 <- lm(baby_wt ~ gestation + mother_wt, data = Birth_weight)
-mod_effect(mod_1, ~ gestation)
+mosaic::tally(~ type, data = HolyokeUrbanRenewal)
 }
 \keyword{datasets}

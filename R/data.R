@@ -1,4 +1,4 @@
-#' Birth weights and maternal data
+#' Holyoke Urban Renewal archival materials
 #'
 #' Birth weight, date, and gestational period collected as part
 #' of the Child Health and Development Studies in 1961 and 1962.
@@ -10,7 +10,7 @@
 #'
 #' @docType data
 #' @name HolyokeUrbanRenewal
-#' @usage data(HolyokeUrbanRenewal
+#' @usage data(HolyokeUrbanRenewal)
 #'
 #' @keywords datasets
 #'
@@ -27,6 +27,5 @@
 #'   }
 #'
 #' @examples
-#' mod_1 <- lm(baby_wt ~ gestation + mother_wt, data = Birth_weight)
-#' mod_effect(mod_1, ~ gestation)
+#' mosaic::tally(~ type, data = HolyokeUrbanRenewal)
 "HolyokeUrbanRenewal"
