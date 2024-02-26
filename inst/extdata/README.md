@@ -1,5 +1,5 @@
 # Folder naming structure
-This folder contains scanned images done by Eillen.
+This folder contains scanned images done by Eileen Crosby (Holyoke Public Library History Room).
 
 The buildings are grouped into blocks and parcels.
 Any given block has several parcels associated wuith
@@ -8,7 +8,7 @@ it. Each parcel has several images associated with it.
 
 The naming of the images are done in the following structure:
 
-info sheet - `block_x_parcel_y_info.png` 
+info sheet - `block_x_parcel_y_info_z.png` 
 This image contains the property location,owner's name, address, type of building,
 current use, type of use, zoning, appraisal date, approach used, cost, income,
 market, and the estmated value.
@@ -23,3 +23,7 @@ have more than one photo.
 
 description - `block_x_parcel_y_desc.png`
 This image provides additional description of the building in the neighborhood. 
+
+where
+
+_x, _y, and _z are of the form "_01" or "_04", etc.
