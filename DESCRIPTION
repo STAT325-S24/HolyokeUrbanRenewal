@@ -1,10 +1,49 @@
 Package: HolyokeUrbanRenewal
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     person(
-      "First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-      comment = c(ORCID = "YOUR-ORCID-ID")
+      given = "Nicholas",
+      family = "Horton",
+      role = c("aut", "cre"),
+      email = "nhorton@amherst.edu",
+      comment = c(ORCID = "0000-0003-3332-4311")
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
+    )
+    person(
+      given = "XX",
+      family = "XX",
+      role = c("aut"),
+      email = "XX@amherst.edu"
     )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
