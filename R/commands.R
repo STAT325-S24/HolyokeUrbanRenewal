@@ -5,13 +5,15 @@
 #' @details
 #' XX
 #' 
-#' @param files the vector of file names
+#' @param none
 #' 
 #' @examples
 #' get_buildings()
 #' 
 #' @export
-get_buildings() <- function(files) {
+get_buildings() <- function() {
+  
+  
   result <- tibble(
     filename = character(),
     block = numeric(),
@@ -20,15 +22,16 @@ get_buildings() <- function(files) {
     file_number = numeric()
   )
   
-  locations <- str_locate(files, "_")
-  result$block <- substr(files, 7, 8)
-  parcel_to_end_locations <- str_locate(files, "parcel_[0-9A]{2,3}_")
-  result$parcel <- substr(files, 17, parcel_to_end_locations[,2] - 1)
-  type_to_end_locations <- str_locate(files, "_[a-z]*_[0-9]{2}.png$")
-  type_to_end <- substr(files, type_to_end_locations[,1], type_to_end_locations[,2])
+  file_names <- list.files("./inst/extdata/", "block")
+
+  result$filename <- file_names
+  result$block <- substr(file_names, 7, 8)
+  parcel_to_end_locations <- str_locate(file_names, "parcel_[0-9A]{2,3}_")
+  result$parcel <- substr(file_names, 17, parcel_to_end_locations[,2] - 1)
+  type_to_end_locations <- str_locate(file_names, "_[a-z]*_[0-9]{2}.png$")
+  type_to_end <- substr(file_names, type_to_end_locations[,1], type_to_end_locations[,2])
   type_locations <- str_locate(type_to_end, "_[a-z]*_")
   result$type <- substr(type_to_end, type_locations[,1] + 1, type_locations[,2] - 1)
-  result$file_number <- substr(files, str_length(files) - 5, str_length(files) - 4)
+  result$file_number <- substr(file_names, str_length(file_names) - 5, str_length(file_names) - 4)
   return(result)
 }
-
