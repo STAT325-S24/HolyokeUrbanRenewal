@@ -1,6 +1,6 @@
 Package: HolyokeUrbanRenewal
 Title: Data and Images From The Holyoke Urban Renewal Files
-Version: 0.2.4
+Version: 0.2.5
 Authors@R: 
     c(person(
       given = "Nicholas J.",
@@ -44,7 +44,7 @@ Authors@R:
       role = c("aut"),
       email = "ccrary26@amherst.edu"
     )
-Description: This package stores the images of the buildings and properties in the location of the Holyoke Urban Renewal Project. Inside this package exists a cleaned dataset and complementary functions to facilitate simple and quick exploration of the properties involved in the Urban Renewal. Furthermore, this package includes a Shiny App that allows the user to view images of the various properties in this dataset from the Holyoke History Room. 
+Description: This package makes images of buildings and properties in the location of the Holyoke Urban Renewal Project. Inside this package exists a cleaned dataset and complementary functions to facilitate simple and quick exploration of the properties involved in the Urban Renewal. Furthermore, this package includes a Shiny App that allows the user to view images of the various properties in this dataset from the Holyoke History Room. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
