@@ -43,7 +43,7 @@ Authors@R:
       family = "Crary",
       role = c("aut"),
       email = "ccrary26@amherst.edu"
-    )
+    ))
 Description: This package makes images of buildings and properties in the location of the Holyoke Urban Renewal Project. Inside this package exists a cleaned dataset and complementary functions to facilitate simple and quick exploration of the properties involved in the Urban Renewal. Furthermore, this package includes a Shiny App that allows the user to view images of the various properties in this dataset from the Holyoke History Room. 
 License: MIT + file LICENSE
 Encoding: UTF-8
