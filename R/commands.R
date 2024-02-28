@@ -19,9 +19,13 @@ get_buildings <- function() {
     type = character(),
     file_number = numeric()
   )
+  image_path <- paste0(
+    system.file(package = "HolyokeUrbanRenewal"),
+    "/extdata"
+  )
+  file_names <- list.files(image_path)
   
-  file_names <- list.files("./inst/extdata/", "block")
-
+  # general format: "block_01_parcel_06A_info_01.png" or "block_02_parcel_06_info_01.png"
   result$filename <- file_names
   result$block <- substr(file_names, 7, 8)
   parcel_to_end_locations <- str_locate(file_names, "parcel_[0-9A]{2,3}_")
