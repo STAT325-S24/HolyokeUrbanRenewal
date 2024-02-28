@@ -1,9 +1,14 @@
 library(tidyverse)
+library(stringr)
 HolyokeUrbanRenewal <-
   readxl::read_xlsx("data-raw/riverview_renewal_data_2024_02_27.xlsx") |>
   janitor::clean_names() |>
   mutate(
-    parcel = str_replace(parcel, "\\.0$", "") # parcel should be "01" not "1"
+    parcel = str_replace(parcel, "\\.0$", ""), # parcel should be "01" not "1"
+    info_1 = str_detect(file_name, "info$", negate = FALSE),
+    parcel = ifelse(str_detect(parcel, "^[1-9]{1}$"), paste0("0", parcel), parcel),
+    block = ifelse(str_detect(block, "^[1-9]{1}$"), paste0("0", block), block)
+    
     # block should be "02" not "2"
     #deed_reference_book = str_replace(deed_reference_book, "\\.0$", ""),
     #deed_reference_page = str_replace(deed_reference_page, "\\.0$", ""),
