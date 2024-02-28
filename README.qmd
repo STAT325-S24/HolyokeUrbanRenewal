@@ -19,7 +19,7 @@ It provides access to archival materials from the Holyoke Public Library History
 
 See https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project for more information.
 
-The package is interesting because XX, YY, and ZZ.
+The package is interesting because it allows users to explore this archival dataset.
 
 The package can be installed by running:
 
@@ -35,10 +35,5 @@ glimpse(HolyokeUrbanRenewal)
 get_filename()
 ```
 
-Here are some sample analyses:
+Some sample exploration and analyses will be eventually be added here.
 
-XX
-
-YY
-
-ZZ

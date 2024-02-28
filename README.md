@@ -11,7 +11,8 @@ See
 https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project
 for more information.
 
-The package is interesting because XX, YY, and ZZ.
+The package is interesting because it allows users to explore this
+archival dataset.
 
 The package can be installed by running:
 
@@ -84,10 +85,4 @@ get_filename()
 
     [1] TRUE
 
-Here are some sample analyses:
-
-XX
-
-YY
-
-ZZ
+Some sample exploration and analyses will be eventually be added here.
