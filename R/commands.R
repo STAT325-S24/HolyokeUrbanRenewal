@@ -1,9 +1,9 @@
 #' Return tibble of data from file names
 #' 
-#' XX
+#' Generate data on all buildings in the urban renewal project
 
 #' @details
-#' XX
+#' Returns a tibble with all image information (and some additional attributes)
 #' 
 #' @param none
 #' 
@@ -11,9 +11,7 @@
 #' get_buildings()
 #' 
 #' @export
-get_buildings() <- function() {
-  
-  
+get_buildings <- function() {
   result <- tibble(
     filename = character(),
     block = numeric(),
