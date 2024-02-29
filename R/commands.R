@@ -58,9 +58,6 @@ get_buildings <- function() {
 #' 
 #' @export
 select_building <- function(block_val = "03", parcel_val = "01") {
-  if(getRversion() >= "2.15.1") {
-    utils::globalVariables(c("block", "parcel"))
-  }
   this_building <- get_buildings() |>
     dplyr::filter(block_val == block, parcel_val == parcel)
   # check for invalid arguments? warn the user?
