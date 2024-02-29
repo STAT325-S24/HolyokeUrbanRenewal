@@ -1,7 +1,7 @@
 Package: HolyokeUrbanRenewal
 Date: 2024-02-28
 Title: Data and Images From The Holyoke Urban Renewal Files
-Version: 0.2.9
+Version: 0.3.0
 Authors@R: 
     c(person(
       given = "Nicholas J.",
