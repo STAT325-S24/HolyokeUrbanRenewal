@@ -6,8 +6,8 @@ HolyokeUrbanRenewal <-
   mutate(
     parcel = str_replace(parcel, "\\.0$", ""), # parcel should be "01" not "1"
     info_1 = str_detect(file_name, "info$", negate = FALSE),
-    parcel = ifelse(str_detect(parcel, "^[1-9]{1}$"), paste0("0", parcel), parcel),
-    block = ifelse(str_detect(block, "^[1-9]{1}$"), paste0("0", block), block)
+    parcel = str_replace(str_extract(file_name, "parcel_[0-9A]{2,3}"), "parcel_", ""), # parcel number
+    block = str_replace(str_extract(file_name, "block_[0-9]{2}"), "block_", "") # block number
     
     # block should be "02" not "2"
     #deed_reference_book = str_replace(deed_reference_book, "\\.0$", ""),
