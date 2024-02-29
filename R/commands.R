@@ -6,7 +6,6 @@
 #' Returns a tibble with all image information (and some additional attributes) for the Holyoke Urban Renewal project
 #'
 #' @source \url{https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project}
-#' @param none
 #' 
 #' @examples
 #' get_buildings()
@@ -59,7 +58,9 @@ get_buildings <- function() {
 #' 
 #' @export
 select_building <- function(block_val = "03", parcel_val = "01") {
-  
+  if(getRversion() >= "2.15.1") {
+    utils::globalVariables(c("block", "parcel"))
+  }
   this_building <- get_buildings() |>
     dplyr::filter(block_val == block, parcel_val == parcel)
   # check for invalid arguments? warn the user?
