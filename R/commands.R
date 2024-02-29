@@ -3,8 +3,9 @@
 #' Generate data on all buildings in the urban renewal project
 
 #' @details
-#' Returns a tibble with all image information (and some additional attributes)
-#' 
+#' Returns a tibble with all image information (and some additional attributes) for the Holyoke Urban Renewal project
+#'
+#' @source \url{https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project}
 #' @param none
 #' 
 #' @examples
@@ -25,13 +26,18 @@ get_buildings <- function() {
   # Adam and Tyler, can we replace base::substr with stringr functions?
   type_to_end <- substr(file_names, type_to_end_locations[,1], type_to_end_locations[,2])
   type_locations <- stringr::str_locate(type_to_end, "_[a-z]*_")
+  image_path <- paste0(
+    system.file(package = "HolyokeUrbanRenewal"),
+    "/extdata"
+  )
   
   results <- dplyr::tibble(filename = file_names) |>
     dplyr::mutate(
       block = substr(file_names, 7, 8),
       parcel = substr(file_names, 17, parcel_to_end_locations[,2] - 1),
       type = substr(type_to_end, type_locations[,1] + 1, type_locations[,2] - 1),
-      file_number = substr(file_names, str_length(file_names) - 5, str_length(file_names) - 4)
+      file_number = substr(file_names, str_length(file_names) - 5, str_length(file_names) - 4),
+      full_path = paste0(image_path, "/", file_names)
     )
   return(results)
 }
@@ -43,10 +49,11 @@ get_buildings <- function() {
 #' @details
 #' Returns a tibble with all image information (and some additional attributes) for a specified building
 #' 
-#' @param none
+#' @param block_val character value for block number
+#' @param parcel_val character value for parcel
 #' 
 #' @examples
-#' select_building(block = "01", parcel = "01")
+#' select_building(block_val = "01", parcel_val = "01")
 #' 
 #' @export
 select_building <- function(block_val = "03", parcel_val = "01") {
