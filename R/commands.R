@@ -78,24 +78,9 @@ summarize_property <- function(block, parcel) {
   map_num <- filter(property, type == "map") |> nrow()
   
   psummary <- cat("This property file has:\n")
-  if (info_num > 1){
-  cat("  ", info_num, "information pages\n")
-  }
-  else {
-    cat("  ", info_num, "information page\n")
-  }
-  if (photo_num > 1){
-    cat("  ", photo_num, "information pages\n")
-  }
-  else {
-    cat("  ", photo_num, "information page\n")
-  }
-  if (map_num > 1){
-    cat("  ", map_num, "information pages\n")
-  }
-  else {
-    cat("  ", map_num, "information page\n")
-  }
+  cat("  ", info_num, "information page(s)\n")
+  cat("  ", photo_num, "information page(s)\n")
+  cat("  ", map_num, "information page(s)\n")
 
 return(psummary)
 }
