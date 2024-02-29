@@ -15,7 +15,7 @@ image_path <- paste0(
   system.file(package = "HolyokeUrbanRenewal"),
   "/extdata"
 )
-files <- HolyokeUrbanRenewal::get_buildings()
+files <- HolyokeUrbanRenewal::get_buildings()$filename
 clean_files <- files[str_detect(files, "\\.png")]  # check for correct format
 # not clear that this next line is needed (or what it is testing for)
 file_names <- lapply(clean_files, get_Filename, pattern = "[.]") |> unlist()
