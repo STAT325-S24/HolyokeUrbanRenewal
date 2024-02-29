@@ -13,7 +13,8 @@
 #' 
 #' @export
 get_buildings <- function() {
-
+  library(dplyr)
+  library(stringr)
   image_path <- paste0(
     system.file(package = "HolyokeUrbanRenewal"),
     "/extdata"
@@ -36,7 +37,10 @@ get_buildings <- function() {
       block = substr(file_names, 7, 8),
       parcel = substr(file_names, 17, parcel_to_end_locations[,2] - 1),
       type = substr(type_to_end, type_locations[,1] + 1, type_locations[,2] - 1),
-      file_number = substr(file_names, str_length(file_names) - 5, str_length(file_names) - 4),
+      file_number = substr(
+        file_names, 
+        stringr::str_length(file_names) - 5, 
+        stringr::str_length(file_names) - 4),
       full_path = paste0(image_path, "/", file_names)
     )
   return(results)
