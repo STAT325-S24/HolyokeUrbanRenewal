@@ -13,8 +13,8 @@ HolyokeUrbanRenewal <-
     parcel = stringr::str_extract(
       stringr::str_extract(file_name, "parcel_[0-9A]{2,3}_"), 
       "[0-9A]{2,3}"
-    )
-    #assessed_value = readr::parse_number(str_extract_all(assessed_value, "\\$.*")) # pulls off the last value, may not be all that we want?
+    ),
+    assessed_value = purr::pluck(str_extract_all(assessed_value, "\\$.*"), tail) # pulls off the last value, may not be all that we want?
   ) |>
   select(-c(
     value_estimate_before_taking, 
