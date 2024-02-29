@@ -2,6 +2,8 @@ library(tidyverse)
 library(png) # For writePNG function
 library(shiny)
 library(stringr)
+# usethis::install_github("STAT325-S24/HolyokeUrbanRenewal")
+library(HolyokeUrbanRenewal)
 
 get_Filename <- function(string = "", pattern = "[.]"){
   header <- str_split(string = string, pattern = pattern)[[1]][1]
@@ -13,10 +15,9 @@ image_path <- paste0(
   system.file(package = "HolyokeUrbanRenewal"),
   "/extdata"
 )
-
-
-files <- list.files(image_path) 
+files <- HolyokeUrbanRenewal::get_buildings()
 clean_files <- files[str_detect(files, "\\.png")]  # check for correct format
+# not clear that this next line is needed (or what it is testing for)
 file_names <- lapply(clean_files, get_Filename, pattern = "[.]") |> unlist()
 
 ui <-
