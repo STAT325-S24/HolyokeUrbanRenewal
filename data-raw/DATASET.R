@@ -14,6 +14,7 @@ HolyokeUrbanRenewal <-
       stringr::str_extract(file_name, "parcel_[0-9A]{2,3}_"), 
       "[0-9A]{2,3}"
     ),
+    house_or_not = ifelse(grepl("[Hhouse]", assessed_value), 1, 0),
     assessed_value = purr::pluck(str_extract_all(assessed_value, "\\$.*"), tail) # pulls off the last value, may not be all that we want?
   ) |>
   select(-c(
