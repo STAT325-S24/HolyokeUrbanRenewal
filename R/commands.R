@@ -63,4 +63,38 @@ select_building <- function(block_val = "03", parcel_val = "01") {
   # check for invalid arguments? warn the user?
   return(this_building)
 }
+
+#' @details
+#' Returns a summary of the available images of a property.
+#' 
+#' @examples
+#' summarize_property()
+#' 
+#' @export
+summarize_property <- function(property) {
+  info_num <- filter(property, type == "info") |> nrow()
+  photo_num <- filter(property, type == "photo") |> nrow()
+  map_num <- filter(property, type == "map") |> nrow()
   
+  psummary <- cat("This property file has:\n")
+  if (info_num > 1){
+  cat("  ", info_num, "information pages\n")
+  }
+  else {
+    cat("  ", info_num, "information page\n")
+  }
+  if (photo_num > 1){
+    cat("  ", photo_num, "information pages\n")
+  }
+  else {
+    cat("  ", photo_num, "information page\n")
+  }
+  if (map_num > 1){
+    cat("  ", map_num, "information pages\n")
+  }
+  else {
+    cat("  ", map_num, "information page\n")
+  }
+
+return(psummary)
+}
