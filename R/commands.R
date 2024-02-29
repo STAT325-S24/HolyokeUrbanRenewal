@@ -68,10 +68,11 @@ select_building <- function(block_val = "03", parcel_val = "01") {
 #' Returns a summary of the available images of a property.
 #' 
 #' @examples
-#' summarize_property()
+#' summarize_property(02, 01)
 #' 
 #' @export
-summarize_property <- function(property) {
+summarize_property <- function(block, parcel) {
+  property <- select_building(block, parcel)
   info_num <- filter(property, type == "info") |> nrow()
   photo_num <- filter(property, type == "photo") |> nrow()
   map_num <- filter(property, type == "map") |> nrow()
