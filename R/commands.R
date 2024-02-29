@@ -13,8 +13,6 @@
 #' 
 #' @export
 get_buildings <- function() {
-  library(dplyr)
-  library(stringr)
   image_path <- paste0(
     system.file(package = "HolyokeUrbanRenewal"),
     "/extdata"
