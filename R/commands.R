@@ -73,14 +73,19 @@ select_building <- function(block_val = "03", parcel_val = "01") {
 #' @export
 summarize_property <- function(block, parcel) {
   property <- select_building(block, parcel)
-  info_num <- filter(property, type == "info") |> nrow()
-  photo_num <- filter(property, type == "photo") |> nrow()
-  map_num <- filter(property, type == "map") |> nrow()
+  print(property)
+  if (nrow(property) == 0) {
+    res <- ("Property doesn't exist")
+    return (res)
+  }
+  info_num <- dplyr::filter(property, type == "info") |> nrow()
+  photo_num <- dplyr::filter(property, type == "photo") |> nrow()
+  map_num <- dplyr::filter(property, type == "map") |> nrow()
   
-  psummary <- cat("This property file has:\n")
-  cat("  ", info_num, "information page(s)\n")
-  cat("  ", photo_num, "information page(s)\n")
-  cat("  ", map_num, "information page(s)\n")
+  l1 <- "This property file has:\n"
+  l2 <- paste(info_num, " information page(s)\n")
+  l3 <- paste(photo_num, "photo(s)\n")
+  l4 <- paste(map_num, " map(s)\n")
 
-return(psummary)
+return(paste(l1, "\t", l2, "\t", l3, "\t", l4))
 }
