@@ -16,7 +16,8 @@ image_path <- paste0(
   "/extdata"
 )
 files <- HolyokeUrbanRenewal::get_buildings()$filename
-clean_files <- files[str_detect(files, "\\.png")]  # check for correct format
+
+clean_files <- files[str_detect(files, "\\.jpg")]  # check for correct format
 # not clear that this next line is needed (or what it is testing for)
 file_names <- lapply(clean_files, get_Filename, pattern = "[.]") |> unlist()
 
@@ -69,7 +70,7 @@ server <- function(input, output, session) {
       src = src,
       width = width,
       height = height,
-      filetype = "image/png",
+      contentType = "image/jpeg",
       alt = paste("This is", input$picture)
     ))
   }, deleteFile = FALSE)
