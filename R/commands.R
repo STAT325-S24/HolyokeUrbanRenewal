@@ -89,3 +89,23 @@ summarize_property <- function(block, parcel) {
 
 return(paste(l1, "\t", l2, "\t", l3, "\t", l4))
 }
+#' @details
+#' Returns a specified image file using inputs for property, file type
+#' 
+#' @examples
+#' file_finder(02, 01, info)
+#' 
+#' @export
+file_finder <- function(block, parcel, ftype) {
+  property <- select_building(block, parcel)
+  print(property)
+  if (nrow(property) == 0) {
+    res <- ("Property doesn't exist")
+    return (res)
+  }
+  path <- property |>
+    dplyr::filter(type == ftype) |>
+    dplyr::select(full_path) 
+    return(path)
+}
+  
