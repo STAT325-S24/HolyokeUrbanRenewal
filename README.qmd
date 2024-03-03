@@ -1,7 +1,7 @@
 ---
 title: "Holyoke Urban Renewal data"
-author: "STAT325 (Text Analytics) class at Amherst College"
-date: "2024-02-26"
+author: "STAT210 and STAT325 class at Amherst College (Nicholas Horton, nhorton@amherst.edu)"
+date: "2024-03-03"
 date-format: iso
 format: gfm
 editor: source
@@ -19,7 +19,9 @@ It provides access to archival materials from the Holyoke Public Library History
 
 See https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project for more information.
 
-The package is interesting because it allows users to explore this archival dataset.
+The package allows users to explore this archival dataset.
+
+There is a Shiny app (in the `shiny` folder).
 
 The package can be installed by running:
 
@@ -28,12 +30,14 @@ devtools::install_github("STAT325-S24/HolyokeUrbanRenewal")
 library(HolyokeUrbanRenewal)
 ```
 
+If this doesn't work (due to the size of the images) it may be necessary to clone the repo and install from within the RStudio `Build` tab.
+
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 citation(package = "HolyokeUrbanRenewal")
 glimpse(HolyokeUrbanRenewal)
-get_filename()
+get_buildings()
 ```
 
-Some sample exploration and analyses will be eventually be added here.
+
 
