@@ -1,7 +1,7 @@
 library(tidyverse)
 library(stringr)
 HolyokeUrbanRenewal <-
-  readxl::read_xlsx("data-raw/riverview_renewal_data_2024_02_27.xlsx") |>
+  readxl::read_xlsx("data-raw/riverview_renewal_data_2024_03_01.xlsx") |>
   janitor::clean_names() |>
   mutate(
     file_name = ifelse(
@@ -15,9 +15,8 @@ HolyokeUrbanRenewal <-
       "[0-9A]{2,3}"
     ),
     house_or_not = ifelse(grepl("[Hhouse]", assessed_value), 1, 0),
+    # temporary fix: we really need to include this information directly in the spreadsheet
     total_assessed_value = str_replace_all(map_chr(str_extract_all(assessed_value, "\\$.*"), last), "\\D","")
-    
-    
   ) |>
   select(-c(
     value_estimate_before_taking, 

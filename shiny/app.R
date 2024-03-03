@@ -15,7 +15,13 @@ image_path <- paste0(
   system.file(package = "HolyokeUrbanRenewal"),
   "/extdata"
 )
-files <- HolyokeUrbanRenewal::get_buildings()$filename
+all_buildings <- HolyokeUrbanRenewal::get_buildings()
+files <- all_buildings$filename
+
+unique_buildings <- all_buildings |>
+  select(block, parcel) |>
+  unique()
+
 
 clean_files <- files[str_detect(files, "\\.jpg")]  # check for correct format
 # not clear that this next line is needed (or what it is testing for)
