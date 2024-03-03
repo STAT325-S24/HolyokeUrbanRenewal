@@ -23,14 +23,14 @@ unique_buildings <- all_buildings |>
   unique()
 
 
-clean_files <- files[str_detect(files, "\\.jpg")]  # check for correct format
+clean_files <- files[str_detect(files, "\\.jpeg")]  # check for correct format
 # not clear that this next line is needed (or what it is testing for)
 file_names <- lapply(clean_files, get_Filename, pattern = "[.]") |> unlist()
 
 ui <-
   navbarPage("Holyoke Riverview Prospect Heights Urban Renewal project",
     tabPanel(
-      title = "About",
+      title = "Select Building",
       mainPanel(
         p("This app displays information about the Holyoke Riverview Prospect Heights Urban Renewal project."),
         p("This project would not have been made possible without the efforts of Eileen Crosby (Holyoke Public Library History Room)."),
@@ -38,7 +38,7 @@ ui <-
     )),
 
     tabPanel(
-      title = "Images",
+      title = "Explore Building",
       helpText("Image output:"),
     
       fluidRow(
@@ -53,6 +53,15 @@ ui <-
           textOutput("bldg_info"),
           imageOutput("image")
         )
+      )
+    ),
+    tabPanel(
+      title = "Explore Spreadsheet",
+      helpText("Spreadsheet information:"),
+      
+      mainPanel(
+        p("This is where the spreadsheet will be displayed."),
+        DT::dataTableOutput("table")
       )
     )
   )
@@ -86,6 +95,10 @@ server <- function(input, output, session) {
   output$tab <- renderUI({
     tagList("Link to scanned images:", url)
   })
+  
+  output$table <- DT::renderDT(
+    HolyokeUrbanRenewal::HolyokeUrbanRenewal |>
+      select(-file_name))
   
 }
 
