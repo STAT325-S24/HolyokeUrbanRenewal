@@ -44,28 +44,17 @@ ui <-
 
     tabPanel(
       title = "Explore Building",
-      helpText("Image output:"),
-    
-      fluidRow(
-        column(
-          3, 
-          wellPanel(
-            uiOutput("building_images"),
-          )
-        ),
-        column(
-          7,
-          textOutput("bldg_info"),
-          imageOutput("image")
-        )
+      mainPanel(
+        textOutput("bldg_info"),
+        uiOutput("building_images"),
+        imageOutput("image")
       )
     ),
     tabPanel(
       title = "Explore Spreadsheet",
-      helpText("Spreadsheet information:"),
+      helpText("Information for all buildings:"),
       
       mainPanel(
-        p("This is where the spreadsheet will be displayed."),
         DT::dataTableOutput("table")
       )
     )
@@ -74,18 +63,29 @@ ui <-
 server <- function(input, output, session) {
   
   output$bldg_info <- renderText({
-    return(paste0("Displaying information for ", input$building))
+    this_building <- unique_buildings |>
+      filter(property_label == input$building)
+    my_parcel <- this_building |> pull(parcel)
+    my_block <- this_building |> pull(block)
+    spreadsheet_line <- filter(HolyokeUrbanRenewal::HolyokeUrbanRenewal, block == my_block, parcel == my_parcel)
+    lines_vector <- c(
+      paste0("Displaying information for ", input$building, ":"),
+      paste0("LOCATION: ", spreadsheet_line$property_location),
+      paste0("OWNER: ", spreadsheet_line$owner),
+      paste0("(", spreadsheet_line$owner_address, ")")
+    )
+    return(paste(lines_vector, collapse = " "))
   })
   
   output$image <- renderImage({
     # width  <- session$clientData$output_image_width
     #cat("width: ", width, "\n")
-    width <- 630
+    width <- 840
     #height <- session$clientData$output_image_height
     #cat("height: ", height, "\n")
-    height <- 840
-    index <- which(clean_files == input$picture)
-    src <- paste0(image_path, "/", files[index])
+    height <- 1120
+    # index <- which(clean_files == input$picture)
+    src <- paste0(image_path, "/", input$picture)
     results <- file.exists(src)
     if (!results) {
       showNotification(paste0("unable to open ", src, "\n"))
@@ -113,7 +113,7 @@ server <- function(input, output, session) {
     my_parcel <- this_building |> pull(parcel)
     my_block <- this_building |> pull(block)
     building_files <- all_buildings |>
-      filter(parcel == my_parcel, block == my_block)
+      filter(block == my_block, parcel == my_parcel)
     radioButtons("picture", "Select an image:", building_files$filename, selected = building_files$filename[1])
   })
   
