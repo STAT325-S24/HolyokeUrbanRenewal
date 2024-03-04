@@ -1,6 +1,6 @@
 ---
 title: "Holyoke Urban Renewal data"
-author: "STAT210 and STAT325 class at Amherst College (Nicholas Horton, nhorton@amherst.edu)"
+author: "STAT210 and STAT325 classes at Amherst College (Nicholas Horton)"
 date: "2024-03-03"
 date-format: iso
 format: gfm

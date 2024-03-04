@@ -1,7 +1,6 @@
 Holyoke Urban Renewal data
 ================
-STAT210 and STAT325 class at Amherst College (Nicholas Horton,
-nhorton@amherst.edu)
+STAT210 and STAT325 classes at Amherst College (Nicholas Horton)
 2024-03-03
 
 This file describes the `HolyokeUrbanRenewal` package. It provides
