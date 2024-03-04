@@ -1,7 +1,7 @@
 Holyoke Urban Renewal data
 ================
 STAT210 and STAT325 classes at Amherst College (Nicholas Horton)
-2024-03-03
+2024-03-04
 
 This file describes the `HolyokeUrbanRenewal` package. It provides
 access to archival materials from the Holyoke Public Library History
@@ -20,8 +20,20 @@ The package can be installed by running:
     devtools::install_github("STAT325-S24/HolyokeUrbanRenewal")
     library(HolyokeUrbanRenewal)
 
-If this doesn’t work (due to the size of the images) it may be necessary
-to clone the repo and install from within the RStudio `Build` tab.
+Because of the size of the package (approximately 1.8GB), it may be
+necessary to increase the default timeouts:
+
+change: `options(timeout=60)`
+
+to
+
+`options(timeout=300)`
+
+This change ensures that the GitHub transaction, which is longer than
+the default timeout (60 seconds), can complete in time.
+
+If that workaround doesn’t succeeed it may be necessary to clone the
+repo and install from within the RStudio `Build` tab.
 
 ``` r
 suppressPackageStartupMessages(library(tidyverse))
@@ -89,3 +101,7 @@ get_buildings()
      9 block_03_parcel_02_map_01.jpeg   03    02     <NA>  1.          /Library/Fra…
     10 block_03_parcel_02_photo_01.jpeg 03    02     <NA>  1.          /Library/Fra…
     # ℹ 398 more rows
+
+Kudos to Eileen Crosby, the STAT210 and STAT325 classes at Amherst
+College, Zoe Jacobs Feinstein, Julia Riseman, and Steffen Plotner for
+their assistance with this project.
