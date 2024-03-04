@@ -14,13 +14,6 @@ HolyokeUrbanRenewal <-
       stringr::str_extract(file_name, "parcel_[0-9A]{2,3}_"), 
       "[0-9A]{2,3}"
     ),
-    house_or_not = ifelse(grepl("[Hhouse]", assessed_value), 1, 0),
-    # temporary fix: we really need to include this information directly in the spreadsheet
-    total_assessed_value = str_replace_all(map_chr(str_extract_all(assessed_value, "\\$.*"), last), "\\D","")
-  ) |>
-  select(-c(
-    value_estimate_before_taking, 
-    value_estimate_after_taking,
-    value_estimate_total
-  )) # almost no data here, let's get rid of them (and perhaps others)
+    house_or_not = ifelse(stringr::str_detect("[Hhouse]", assessed_text), "House", "Not house")
+  )
 usethis::use_data(HolyokeUrbanRenewal, overwrite = TRUE)

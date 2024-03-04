@@ -5,32 +5,37 @@
 \alias{HolyokeUrbanRenewal}
 \title{Holyoke Urban Renewal archival materials}
 \format{
-A data frame with 886 observations on the following variables.
+A data frame with 114 observations on the following variables.
 \itemize{
-\item{\code{baby_wt}} {Birth weight of baby, in ounces.}
-\item{\code{mother_wt}} {in pounds}
-\item{\code{gestation}} {Length of the pregnancy, in days.}
-\item{\code{smoker}} {Whether the mother smoked during the pregnancy.}
-\item{\code{income}}{Family yearly income in 2500USD increments 0 = under 2500, 1=2500-4999, ..., 8= 12,500-14,999, 9=15000+}
+\item{\code{file_name}} {File name of scanned image (in extdata)}
+\item{\code{block}} {block (string, e.g., "12")}
+\item{\code{parcel}} {parcel (string, e.g., "06" or "06A")}
+\item{\code{property_location}} {Address in Holyoke, MA}
+\item{\code{owner}}{Property owner}
+\item{\code{owner_address}}{Property owner address}
+\item{\code{date_acquired}}{Date acquired}
+\item{\code{data_acquired2}}{Second date acquired (rare)}
+\item{\code{grantor}}{Grantor}
+\item{\code{deed_reference_book}}{Deed information}
+\item{\code{deed_reference_page}}{Deed information}
+\item{\code{tax_year}}{Tax information}
+\item{\code{tax_remarks}}{Tax information}
+\item{\code{assessed_text}}{Assessment information}
+\item{\code{assessed_value}}{Total assessment amount (see text for components)}
+\item{\code{stamps}}{Tax information}
+\item{\code{remarks}}{Tax remarks}
+\item{\code{building_description}}{Building information (various formats)}
+\item{\code{building_data}}{Building information (various formats)}
+\item{\code{house_or_not}}{House string in description (coarse way to identify houses)}
 }
 }
 \source{
-D. Nolan and T.P. Speed (2009) "Stat Labs: Mathematical
-Statistics Through Applications"
+Holyoke Public Library History Room, see https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project
 }
 \usage{
 data(HolyokeUrbanRenewal)
 }
 \description{
-Birth weight, date, and gestational period collected as part
-of the Child Health and Development Studies in 1961 and 1962.
-Information about the baby's parents --- age, education, height,
-weight, and whether the mother smoked is also recorded.
-The data were present by Nolan and Speed to address the question
-of whether there is a link between maternal smoking and the
-baby's health.
-}
-\examples{
-head(mtcars)
+Building information from 1960's era urban renewal project in Holyoke, MA.
 }
 \keyword{datasets}
