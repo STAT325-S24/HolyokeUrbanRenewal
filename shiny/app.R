@@ -79,12 +79,9 @@ server <- function(input, output, session) {
   
   output$image <- renderImage({
     # width  <- session$clientData$output_image_width
-    #cat("width: ", width, "\n")
     width <- 840
     #height <- session$clientData$output_image_height
-    #cat("height: ", height, "\n")
     height <- 1120
-    # index <- which(clean_files == input$picture)
     src <- paste0(image_path, "/", input$picture)
     results <- file.exists(src)
     if (!results) {
@@ -121,7 +118,6 @@ server <- function(input, output, session) {
     HolyokeUrbanRenewal::HolyokeUrbanRenewal |>
       select(-file_name))
 }
-
 
 # Run the application 
 shinyApp(ui = ui, server = server)
