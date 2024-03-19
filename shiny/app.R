@@ -49,7 +49,6 @@ ui <-
             unique_blocks, 
             selected = unique_blocks[1]
           ),
-          p("Hello"),
           uiOutput("parcel")
         )
     )),
