@@ -98,7 +98,7 @@ server <- function(input, output, session) {
   
   url <- a(
     "For more information click here", 
-    href="https://github.com/STAT210-S23/STAT210-Holyoke-History-Room/tree/main/Riverview_Renewal_Project"
+    href="https://github.com/STAT325-S24/HolyokeUrbanRenewal"
   )
   output$tab <- renderUI({
     tagList("Link to scanned images:", url)
