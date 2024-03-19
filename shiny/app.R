@@ -24,6 +24,9 @@ unique_buildings <- all_buildings |>
   mutate(property_label = paste0("Block ", block, ", Parcel ", parcel)) |>
   unique()
 
+unique_blocks <- unique(unique_buildings$block)
+unique_blocks <- unique_blocks[! unique_blocks %in% c("", ".m")]
+
 
 clean_files <- files[str_detect(files, "\\.jpeg")]  # check for correct format
 # not clear that this next line is needed (or what it is testing for)
@@ -32,13 +35,22 @@ clean_files <- files[str_detect(files, "\\.jpeg")]  # check for correct format
 ui <-
   navbarPage("Holyoke Riverview Prospect Heights Urban Renewal project",
     tabPanel(
-      title = "Select Building",
+      title = "Select Block and Parcel (Building)",
       mainPanel(
         p("This app displays information about the Holyoke Riverview Prospect Heights Urban Renewal project."),
         p("This project would not have been made possible without the efforts of Eileen Crosby (Holyoke Public Library History Room)."),
-        uiOutput("tab"),
+        p("Last updated 2024-03-19."),
+        
+        uiOutput("scan_link"),
         wellPanel(
-          radioButtons("building", "Select a building:", unique_buildings$property_label, selected = unique_buildings$property_label[1])
+          radioButtons(
+            "block",
+            "Select a block:", 
+            unique_blocks, 
+            selected = unique_blocks[1]
+          ),
+          p("Hello"),
+          uiOutput("parcel")
         )
     )),
 
@@ -64,7 +76,7 @@ server <- function(input, output, session) {
   
   output$bldg_info <- renderText({
     this_building <- unique_buildings |>
-      filter(property_label == input$building)
+      filter(property_label == input$parcel)
     my_parcel <- this_building |> pull(parcel)
     my_block <- this_building |> pull(block)
     spreadsheet_line <- filter(HolyokeUrbanRenewal::HolyokeUrbanRenewal, block == my_block, parcel == my_parcel)
@@ -78,6 +90,7 @@ server <- function(input, output, session) {
   })
   
   output$image <- renderImage({
+    req(input$picture)
     # width  <- session$clientData$output_image_width
     width <- 840
     #height <- session$clientData$output_image_height
@@ -100,18 +113,34 @@ server <- function(input, output, session) {
     "For more information click here", 
     href="https://github.com/STAT325-S24/HolyokeUrbanRenewal"
   )
-  output$tab <- renderUI({
+  output$scan_link <- renderUI({
     tagList("Link to scanned images:", url)
+  })
+  
+  output$parcel <- renderUI({
+    this_block <- unique_buildings |>
+      filter(block == input$block)
+    radioButtons(
+      "parcel", 
+      "Select a parcel:", 
+      this_block$property_label, 
+      selected = this_block$property_label[1]
+    )
   })
   
   output$building_images <- renderUI({
     this_building <- unique_buildings |>
-      filter(property_label == input$building)
+      filter(property_label == input$parcel)
     my_parcel <- this_building |> pull(parcel)
     my_block <- this_building |> pull(block)
     building_files <- all_buildings |>
       filter(block == my_block, parcel == my_parcel)
-    radioButtons("picture", "Select an image:", building_files$filename, selected = building_files$filename[1])
+    radioButtons(
+      "picture", 
+      "Select an image:", 
+      building_files$filename, 
+      selected = building_files$filename[1]
+    )
   })
   
   output$table <- DT::renderDT(
