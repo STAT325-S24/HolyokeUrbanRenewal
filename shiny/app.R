@@ -35,23 +35,34 @@ clean_files <- files[str_detect(files, "\\.jpeg")]  # check for correct format
 ui <-
   navbarPage("Holyoke Riverview Prospect Heights Urban Renewal project",
     tabPanel(
-      title = "Select Block and Parcel (Building)",
+      title = "Select Block and Parcel",
       mainPanel(
-        p("This app displays information about the Holyoke Riverview Prospect Heights Urban Renewal project."),
+        p(paste0(
+          "This app displays information about the Holyoke Riverview Prospect Heights Urban Renewal project ",
+          "(last updated 2024-03-19)."
+          )
+        ),
         p("This project would not have been made possible without the efforts of Eileen Crosby (Holyoke Public Library History Room)."),
-        p("Last updated 2024-03-19."),
         
         uiOutput("scan_link"),
-        wellPanel(
-          radioButtons(
-            "block",
-            "Select a block:", 
-            unique_blocks, 
-            selected = unique_blocks[1]
+        fluidRow(
+          column(3,
+            radioButtons(
+              "block",
+              "Select a block:", 
+              unique_blocks, 
+              selected = unique_blocks[1]
+            )
           ),
-          uiOutput("parcel")
+          column(4,
+            uiOutput("parcel")
+          ),
+          column(4,
+                 imageOutput("map")
+          )
         )
-    )),
+      )
+    ),
 
     tabPanel(
       title = "Explore Building",
@@ -109,7 +120,7 @@ server <- function(input, output, session) {
   }, deleteFile = FALSE)
   
   url <- a(
-    "For more information click here", 
+    "click here.", 
     href="https://github.com/STAT325-S24/HolyokeUrbanRenewal"
   )
   output$scan_link <- renderUI({
@@ -145,6 +156,16 @@ server <- function(input, output, session) {
   output$table <- DT::renderDT(
     HolyokeUrbanRenewal::HolyokeUrbanRenewal |>
       select(-file_name))
+  
+  output$map <- renderImage({
+    list(
+      src = "holyoke_map.png",
+      width = 420,
+      height = 560,
+      contentType = "image/png",
+      alt = "Map of Holyoke MA urban renewal project"
+    )
+  })
 }
 
 # Run the application 
